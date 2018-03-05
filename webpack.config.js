@@ -33,7 +33,7 @@ module.exports = {
         loaders: [
             {
               test: /\.js$/,
-              exclude: /node_modules/,
+              exclude: /node_modules/,// 不需要处理的文件夹
               loader: "babel-loader",
               query:
                 {
