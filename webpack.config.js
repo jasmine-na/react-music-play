@@ -5,7 +5,6 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
@@ -19,7 +18,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: './app/index.tpl.html',
+          template: './index.tpl.html',
           inject: 'body',
           filename: './index.html'
         }),
@@ -30,10 +29,7 @@ module.exports = {
           'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
-    module: {
-        resolve:{
-            extensions:['','.js','.json']
-        },        
+    module: {        
         loaders: [
             {
               test: /\.js$/,
@@ -43,10 +39,6 @@ module.exports = {
                 {
                   presets:['react','es2015']
                 }
-            },
-            {
-                test: /\.json?$/,
-                loader: 'json'
             },
             {
                 test: /\.css$/,
