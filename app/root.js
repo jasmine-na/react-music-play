@@ -1,9 +1,14 @@
 import React from 'react';
 import Header from './components/header';
+import Progress from './components/Progress'
 let Root=React.createClass({
     render(){
         return(
-                <Header />
+	        	<div>
+                   <Header />
+                   <Progress progress="1">
+                   </Progress>
+	        	</div>
             );
         
    }
