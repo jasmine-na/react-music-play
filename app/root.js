@@ -11,22 +11,30 @@ let Root=React.createClass({
           $('#player').jPlayer({
           	    ready:function () {
           	    	 $(this).jPlayer('setMedia',{
-          	    	 	mp3:'http://fs.w.kugou.com/201803071922/a9f3686fd8599af03c11d1a9304181aa/G022/M03/10/1D/toYBAFWBvxWAUSxxAELMwt_tRxs509.mp3'
+          	    	 	mp3:'http://f1.htqyy.com/play7/133/mp3/3'
           	    	 }).jPlayer('play');
           	    },
           	    supplied:'mp3',
           	    wmode:'window'
           });
-          $('#player').bind($.jPlayer.event.timeupdate, function(event) { 
-          	    
+          var that=this;
+          $('#player').bind($.jPlayer.event.timeupdate, function(event) {
+                console.log(Math.round(event.jPlayer.status.currentTime))
+          	    that.setState({
+          	    	progress: Math.round(event.jPlayer.status.currentTime)
+          	    });
           });
           
+    },
+    componentWillUnMount(){
+          $('#player').unbind($.jPlayer.event.timeupdate);
     },
     render(){
         return(
 	        	<div>
                    <Header />
-                   <Progress progress="1">
+                   <div id="player"></div>
+                   <Progress progress={this.state.progress}>
                    </Progress>
 	        	</div>
             );
