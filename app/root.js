@@ -19,14 +19,14 @@ let Root=React.createClass({
           });
           var that=this;
           $('#player').bind($.jPlayer.event.timeupdate, function(event) {
-                console.log(Math.round(event.jPlayer.status.currentTime))
           	    that.setState({
-          	    	progress: Math.round(event.jPlayer.status.currentTime)
+          	    	//progress: Math.round(event.jPlayer.status.currentTime)
+          	    	progress: event.jPlayer.status.currentPercentAbsolute
           	    });
           });
           
     },
-    componentWillUnMount(){
+    componentWillUnmount(){
           $('#player').unbind($.jPlayer.event.timeupdate);
     },
     render(){
